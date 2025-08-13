@@ -20,7 +20,7 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "Sonatel-web-1"
+    Name = "web-1"
   }
 }
 */

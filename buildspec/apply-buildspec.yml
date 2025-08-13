@@ -1,0 +1,14 @@
+version: 0.2
+env:
+  variables:
+    TF_VAR_aws_region: "eu-west-3"
+    TF_BACKEND_BUCKET: "infra-aws-cicd-pipeline"
+phases:
+  pre_build:
+    commands:
+      - terraform init -reconfigure -backend-config="bucket=${TF_BACKEND_BUCKET}" -backend-config="region=${TF_VAR_aws_region}"
+      - terraform validate
+  
+  build:
+    commands:
+      - terraform apply --auto-approve
