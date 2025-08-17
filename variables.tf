@@ -4,6 +4,7 @@ variable "region" {
   description = "AWS region"
 }
 
+/*
 variable "public_subnet_cidrs" {
   type = list(string)
   description = "Public Subnet CIDR values"
@@ -21,3 +22,4 @@ variable "azs" {
  description = "Availability Zones"
  default     = ["eu-west-3a", "eu-west-3b", "eu-west-3c"]
 }
+*/
