@@ -4,6 +4,12 @@ variable "region" {
   description = "AWS region"
 }
 
+variable "organization_root_id" {
+  description = "The root ID of the existing AWS Organization"
+  type        = string
+
+}
+
 /*
 variable "public_subnet_cidrs" {
   type = list(string)

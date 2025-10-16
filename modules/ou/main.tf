@@ -1,3 +1,4 @@
-resource "aws_organizations_organization" "org" {
-  feature_set = "ALL"
+resource "aws_organizations_organizational_unit" "org" {
+  name      = var.ou_name
+  parent_id = var.parent_id
 }
