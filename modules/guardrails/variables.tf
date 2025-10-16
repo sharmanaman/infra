@@ -14,8 +14,7 @@ variable "policy_content" {
   type        = string
 }
 
-variable "target_id" {
+variable "target_ids" {
   description = "The ID of the target OU or account to attach the SCP to. Leave empty if no attachment is needed."
-  type        = string
-  default     = ""
+  type        = list(string)
 }

@@ -39,6 +39,14 @@ module "frontend" {
   parent_id = module.Production_new.ou_prod_id
 }
 
+# Create the top-level 'Production_second' OU
+module "Production_second" {
+  source   = "./modules/ou"
+  ou_name  = "Production_second"
+  parent_id = var.organization_root_id
+  #parent_id = aws_organizations_organization.org.roots[0].id
+}
+
 module "DenyS3Delete" {
   source        = "./modules/guardrails"
   policy_name   = "DenyS3Delete"
@@ -54,7 +62,7 @@ module "DenyS3Delete" {
   ]
 }
 EOF
-  target_id      = module.Production_new.ou_prod_id
+  target_ids        = [module.Production_new.ou_prod_id, module.Production_second.ou_prod_id]
 }
 
 # Deny IAM policy modifications
@@ -85,5 +93,5 @@ module "deny_iam_mod" {
   ]
 }
 EOF
-  target_id       = module.frontend.ou_prod_id
+  target_ids         = [module.Production_new.ou_prod_id, module.Production_second.ou_prod_id]
 }
