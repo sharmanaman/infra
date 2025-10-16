@@ -1,3 +1,4 @@
+/*
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 
@@ -7,7 +8,6 @@ resource "aws_vpc" "main" {
 }
 
 
-/*
 resource "aws_subnet" "public_subnets" {
   count = length(var.public_subnet_cidrs)
   vpc_id = aws_vpc.main.id
