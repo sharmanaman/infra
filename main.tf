@@ -39,7 +39,6 @@ module "frontend" {
   parent_id = module.Production_new.ou_prod_id
 }
 
-/*
 module "DenyS3Delete" {
   source        = "./modules/guardrails"
   policy_name   = "DenyS3Delete"
@@ -55,7 +54,7 @@ module "DenyS3Delete" {
   ]
 }
 EOF
-  target_id      = module.ou_prod_id
+  target_id      = module.Production_new.ou_prod_id
 }
 
 # Deny IAM policy modifications
@@ -86,7 +85,5 @@ module "deny_iam_mod" {
   ]
 }
 EOF
-  target_id       = module.ou_prod_id
+  target_id       = module.frontend.ou_prod_id
 }
-
-*/
